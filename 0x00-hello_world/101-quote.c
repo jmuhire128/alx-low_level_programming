@@ -2,6 +2,7 @@
  *Write a C program that prints
  */
 #include <stdio.h>
+#include <unistd.h>
 /**
  *main - Entry point
  *
