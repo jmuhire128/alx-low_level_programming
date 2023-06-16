@@ -18,7 +18,7 @@ int main(void)
 			putchar((digit_a % 10) + '0');
 			putchar((digit_b % 10) + '0');
 
-			if (digit_a != 8 && digit_b != 9)
+			if (digit_a != 8 || digit_b != 9)
 			{
 				putchar(',');
 				putchar(' ');
