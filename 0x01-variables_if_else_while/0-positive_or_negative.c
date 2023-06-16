@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
 /**
  * main - printing numbers
- * compare numbers
+ * compare number with random number
  *
  * Return: always 0 if success
  */
