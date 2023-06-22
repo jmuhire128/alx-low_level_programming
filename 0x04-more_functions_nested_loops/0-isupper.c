@@ -10,7 +10,7 @@
 
 int _isupper(int c)
 {
-	if (c < 'a')
+	if (c >= 65 && c <= 90)
 	{
 	/*	printf("is Uppercase");*/
 		return (1);
