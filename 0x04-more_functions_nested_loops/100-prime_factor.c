@@ -9,18 +9,17 @@
 
 int main(void)
 {
-	long n, maxk;
+	int n;
 	long number = 612852475143;
-	double square = sqrt(number);
 
-	for (n = 1; n <= square; n++)
+	for (n = (int) sqrt(number); n > 2; n++)
 	{
 		if (number % n == 0)
 		{
-			maxk = number / n;
+			printf("%d", n);
+			break;
 		}
 	}
-	printf("%ld", maxk);
 
 	return (0);
 }
