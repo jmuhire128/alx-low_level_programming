@@ -2,11 +2,9 @@
 #include "main.h"
 
 /**
- * print_array - function that prints elts of an array
+ * print_array - prints array string
  * @a: array
- * @n: number of elements
- *
- * Return: nothing;
+ * @n: size of array
  */
 
 void print_array(int *a, int n)
@@ -17,11 +15,10 @@ void print_array(int *a, int n)
 	{
 		printf("%d", a[i]);
 
-		if (i == n - 1)
+		if (i != n - 1)
 		{
 			printf(", ");
 		}
 	}
-
 	printf("\n");
 }
