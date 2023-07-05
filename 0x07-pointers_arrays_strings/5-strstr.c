@@ -3,7 +3,7 @@
 /**
  * _strstr - finds the first occurrence of the substring needle
  * in the string haystack
- * @haystack: string tobe checked
+ * @haystack: string to be checked
  * @needle: string to check in haystack
  *
  * Return: pointer to the string array
@@ -23,5 +23,5 @@ char *_strstr(char *haystack, char *needle)
 			return (haystack);
 		}
 	}
-	return (NULL);
+	return (0);
 }
