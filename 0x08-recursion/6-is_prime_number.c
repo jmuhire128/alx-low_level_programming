@@ -20,7 +20,7 @@ int multiplier(int n, int i)
 	{
 		return (multiplier(n, i + 1));
 	}
-
+}
 /**
  * is_prime_number - check if number is prime or not
  * @n: number to check
