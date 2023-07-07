@@ -4,7 +4,7 @@
  * root - find root of number
  * @n: number
  * @i: iterator
- * 
+ *
  * Return: integer
  */
 int root(int n, int i)
@@ -25,7 +25,7 @@ int root(int n, int i)
 
 /**
  * _sqrt_recursion - return square root of number
- * @n: number to sqrt 
+ * @n: number to sqrt
  *
  * Return: integer
  */
