@@ -29,7 +29,6 @@ int checker(char *s, int l, int n)
 	{
 		return (1);
 	}
-	
 	if (s[n] == s[l])
 	{
 		return (checker(s, l - 1, n + 1));
