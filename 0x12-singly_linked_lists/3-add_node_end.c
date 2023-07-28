@@ -1,60 +1,40 @@
 #include "lists.h"
-/**
- * _strlen - calculated the string length.
- * @str: pointer to String to be checked.
- * Return: string length.
- */
-unsigned int _strlen(const char *str)
-{
-	unsigned int length = 0;
-
-	while (str[length])
-		length++;
-	return (length);
-}
+#include <string.h>
 
 /**
- * last_node - return the last_node of a list.
- * @h: pointer to list.
- * Return: last node.
- */
-list_t *last_node(list_t *h)
-{
-	list_t *tmp_node = h;
-
-	if (tmp_node)
-		while (tmp_node->next)
-			tmp_node = tmp_node->next;
-	return (tmp_node);
-}
-/**
- * add_node_end - adds a new node at the beginning of a list_t list.
- * @head: pointer to list head.
- * @str: pointer to String to be included in the new node.
+ * add_node_end - add to end
+ * @head: pointer to head
+ * @str: input string
  * Return: the address of the new element, or NULL if it failed
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *tail_node, *new_node;
+	list_t  *new, *ptr;
+	unsigned int len = 0;
 
-	tail_node = last_node(*head); /* Address of last node */
-	new_node = malloc(sizeof(list_t));
-	if (new_node)
+	new = malloc(sizeof(list_t));
+	if (new)
 	{
-		if (tail_node)
-			tail_node->next = new_node; /* Last_node_next points to new_node */
-		if (str)
+		while (*(str + len))
+			len++;
+		new->str = strdup(str);
+		if (new->str)
 		{
-			new_node->len = _strlen(str);
-			new_node->str = strdup(str);
+			new->len = len;
+			new->next = NULL;
+			if (!*head)
+			{
+				*head = new;
+				return (new);
+			}
+			ptr = *head;
+			while (ptr->next)
+				ptr = ptr->next;
+			ptr->next = new;
+			return (new);
 		}
-		else
-		{
-			new_node->len = 0;
-			new_node->str = "(nil)";
-		}
-		new_node->next = NULL;
-		return (new_node);
+		free(new);
+		return (NULL);
 	}
 	return (NULL);
 }
