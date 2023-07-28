@@ -1,43 +1,60 @@
 #include "lists.h"
-#include <string.h>
-#include <stdio.h>
 /**
- * add_node_end - add a new node at the end of `list_t` list
- * @head: double pointer to head
- * @str: string to duplicate into new node
- * Return: Address of the new element or NULL if failed
+ * _strlen - calculated the string length.
+ * @str: pointer to String to be checked.
+ * Return: string length.
+ */
+unsigned int _strlen(const char *str)
+{
+	unsigned int length = 0;
+
+	while (str[length])
+		length++;
+	return (length);
+}
+
+/**
+ * last_node - return the last_node of a list.
+ * @h: pointer to list.
+ * Return: last node.
+ */
+list_t *last_node(list_t *h)
+{
+	list_t *tmp_node = h;
+
+	if (tmp_node)
+		while (tmp_node->next)
+			tmp_node = tmp_node->next;
+	return (tmp_node);
+}
+/**
+ * add_node_end - adds a new node at the beginning of a list_t list.
+ * @head: pointer to list head.
+ * @str: pointer to String to be included in the new node.
+ * Return: the address of the new element, or NULL if it failed
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *current;
-	list_t *new_node;
-	int c;
+	list_t *tail_node, *new_node;
 
-	current = *head;
-	while (current && current->next != NULL)
-		current = current->next;
-
-	for (c = 0; dup_str[c] != '\0'; c++)
-		;
-
+	tail_node = last_node(*head); /* Address of last node */
 	new_node = malloc(sizeof(list_t));
-	if (new_node == NULL)
+	if (new_node)
 	{
-		free(new_node);
-		return (NULL);
+		if (tail_node)
+			tail_node->next = new_node; /* Last_node_next points to new_node */
+		if (str)
+		{
+			new_node->len = _strlen(str);
+			new_node->str = strdup(str);
+		}
+		else
+		{
+			new_node->len = 0;
+			new_node->str = "(nil)";
+		}
+		new_node->next = NULL;
+		return (new_node);
 	}
-	new_node->str = strdup(str);
-	if (new_node->str == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-	new_node->len = c;
-	new_node->next = NULL;
-
-	if (current)
-		current->next = new_node;
-	else
-		*head = new_node;
-	return (new_node);
+	return (NULL);
 }
